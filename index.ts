@@ -1,6 +1,14 @@
-require('dotenv').config({ path: './variables.env' });
+require('dotenv').config({ path: './.env' });
 import { AppConfig } from './config';
 import * as WebSocket from 'ws';
+import * as express from 'express';
+
+let app = express();
+const port = process.env.PORT;
+
+app.get("/",(req,res)=>{
+    res.send("ok");
+})
 
 const ws = new WebSocket(AppConfig.wss.url);
 
@@ -45,4 +53,8 @@ ws.on('message', function incoming(data) {
             console.log(command.value);
             break;
     }
+});
+
+app.listen(port,()=>{
+  console.log(port)
 });
