@@ -27,16 +27,11 @@ ws.on('open', async function open() {
 });
 
 ws.on('message', function incoming(data) {
-    switch(data){
 
-        case 'PING :tmi.twitch.tv':
-            ws.send('PONG :tmi.twitch.tv')
-            break;
-
-        default:
-            console.log(data);
-            break;
-
+    if (data.includes('PING :tmi.twitch.tv')){
+        console.log("se envia pong");
+        ws.send('PONG :tmi.twitch.tv')
+        return;
     }
 
     let command = data.split(" :!")[1];

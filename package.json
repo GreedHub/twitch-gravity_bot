@@ -4,7 +4,8 @@
   "description": "a simple chatbot for twitch",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
